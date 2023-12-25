@@ -8,6 +8,8 @@ import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { Route } from "../../router/routes";
 import { LanguageStackParamList } from "../../types/language";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { StorageKeys } from "../../constants/storagekeys";
 
 const LanguageScreen = () => {
   const [selectedLanguage, setselectedLanguage] = useState("");
@@ -17,6 +19,7 @@ const LanguageScreen = () => {
     >();
   const handleSetLanguage = (language: string) => {
     setselectedLanguage(language);
+    AsyncStorage.setItem(StorageKeys.IsFirstTime, "1");
     navigation.navigate(Route.TabNavigator);
   };
   return (
