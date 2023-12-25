@@ -12,4 +12,5 @@ export const colors = {
   GREY_THREE: "#F5F5F5",
   GREY_FOUR: "#4B5563",
   BLACKONE: "#191919",
+  TRANSPARENT: "transparent"
 };

@@ -20,6 +20,14 @@ export const languageScreenStyles = StyleSheet.create({
     alignSelf: "center",
     borderRadius: 30,
     padding: 20,
+    borderColor: colors.TRANSPARENT,
+    borderWidth: 1,
+    borderStyle: "solid",
+  },
+  languageItemSelected: {
+    borderColor: colors.BLACKONE,
+    borderWidth: 1,
+    borderStyle: "solid",
   },
   languageView: {
     marginTop: wp(50),
