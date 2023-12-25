@@ -7,11 +7,28 @@
     "ios": "react-native run-ios",
     "lint": "eslint .",
     "start": "react-native start",
-    "test": "jest"
+    "test": "jest",
+    "type-check": "tsc",
+    "format": "prettier --write --staged './**/*.{js,jsx,ts,tsx}' --config ./.prettierrc"
   },
   "dependencies": {
+    "@react-native-async-storage/async-storage": "^1.21.0",
+    "@react-navigation/material-bottom-tabs": "^6.2.19",
+    "@react-navigation/native": "^6.1.9",
+    "@react-navigation/native-stack": "^6.9.17",
+    "@reduxjs/toolkit": "^2.0.1",
+    "galio-framework": "^0.8.0",
     "react": "18.2.0",
-    "react-native": "0.73.1"
+    "react-native": "0.73.1",
+    "react-native-paper": "^5.11.4",
+    "react-native-responsive-screen": "^1.4.2",
+    "react-native-safe-area-context": "^4.8.2",
+    "react-native-screens": "^3.29.0",
+    "react-native-swiper": "^1.6.0",
+    "react-native-vector-icons": "^10.0.3",
+    "react-redux": "^9.0.4",
+    "redux-persist": "^6.0.0",
+    "sqlite3": "^5.1.6"
   },
   "devDependencies": {
     "@babel/core": "^7.20.0",
@@ -21,14 +38,27 @@
     "@react-native/eslint-config": "^0.73.1",
     "@react-native/metro-config": "^0.73.2",
     "@react-native/typescript-config": "^0.73.1",
+    "@types/node": "^20.3.0",
     "@types/react": "^18.2.6",
     "@types/react-test-renderer": "^18.0.0",
     "babel-jest": "^29.6.3",
+    "babel-plugin-inline-import": "^3.0.0",
     "eslint": "^8.19.0",
+    "husky": "^8.0.3",
     "jest": "^29.6.3",
     "prettier": "2.8.8",
     "react-test-renderer": "18.2.0",
     "typescript": "5.0.4"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,scss,css,tsx}": [
+      "yarn format"
+    ]
   },
   "engines": {
     "node": ">=18"
