@@ -9,7 +9,6 @@ const defaultPadding = {
 };
 export const commonStyles = StyleSheet.create({
   root: {
-    ...defaultPadding,
     paddingLeft: appPadding,
     paddingRight: appPadding,
   },

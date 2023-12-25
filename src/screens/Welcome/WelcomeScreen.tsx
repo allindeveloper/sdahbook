@@ -14,14 +14,14 @@ import { WelcomeStackParamList } from "../../types/welcome";
 const WelcomeScreen = () => {
   const navigation =
     useNavigation<
-      NativeStackNavigationProp<WelcomeStackParamList, Route.TabNavigator>
+      NativeStackNavigationProp<WelcomeStackParamList, Route.LanguageIntro>
     >();
 
   const onIndexChanged = (index: number) => {
     //
   };
   const onPressWelcome = () => {
-    navigation.navigate(Route.TabNavigator);
+    navigation.navigate(Route.LanguageIntro);
   };
   return (
     <View style={commonStyles.flexOne}>
