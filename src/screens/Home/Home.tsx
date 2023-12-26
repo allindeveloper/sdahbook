@@ -1,5 +1,5 @@
-import React, { useRef, useState } from "react";
-import { Animated, View } from "react-native";
+import React from "react";
+import { View } from "react-native";
 import useHymns from "../../hooks/useHymns";
 import { FlashList } from "@shopify/flash-list";
 import { HymnBook } from "../../types/hymn";

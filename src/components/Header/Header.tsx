@@ -12,7 +12,10 @@ type HeaderProps = {
 export const Header: React.FC<HeaderProps> = ({ title }) => {
   return (
     <View style={styles.pageHeaderRoot}>
-      <StatusBar barStyle="dark-content" backgroundColor={colors.PRIMARY} />
+      <StatusBar
+        barStyle="dark-content"
+        backgroundColor={colors.PRIMARY_BOLD}
+      />
 
       <Appbar.Header style={[styles.pageHeader]}>
         <NativeText size={36} defaultColor={false} bold color={colors.WHITE}>

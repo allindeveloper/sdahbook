@@ -1,7 +1,8 @@
 export const colors = {
   PRIMARY: "#35B8B2",
+  PRIMARY_BOLD: "#2fa49f",
   WHITE: "#ffffff",
-  WHITE_SHORT: "#fff",
+  TAB_BACKGROUND: "#effaf9",
   YELLOW: "#FFC20E",
   GRAY: "#576962",
   GREY: "#E4E4E4",
@@ -11,5 +12,5 @@ export const colors = {
   GREY_THREE: "#F5F5F5",
   BLACK: "#000000",
   BLACKONE: "#191919",
-  TRANSPARENT: "transparent"
+  TRANSPARENT: "transparent",
 };

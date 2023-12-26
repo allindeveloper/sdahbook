@@ -5,17 +5,17 @@ import { Route } from "./routes";
 
 export const splashRouter = [
   {
-    route: Route.Welcome,
+    route: Route.Splash,
     showHeader: false,
-    screen: WelcomeScreen,
+    screen: SplashScreen,
     hideHiderTitle: false,
     title: "",
     index: 1,
   },
   {
-    route: Route.Splash,
+    route: Route.Welcome,
     showHeader: false,
-    screen: SplashScreen,
+    screen: WelcomeScreen,
     hideHiderTitle: false,
     title: "",
     index: 2,
