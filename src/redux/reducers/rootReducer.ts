@@ -1,4 +1,7 @@
 import { combineReducers } from "@reduxjs/toolkit";
-const rootReducer = combineReducers({});
+import hymnReducer from "./hymnReducer"
+const rootReducer = combineReducers({
+    hymnReducer
+});
 
 export default rootReducer;

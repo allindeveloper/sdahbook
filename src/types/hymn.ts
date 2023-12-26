@@ -1,16 +1,17 @@
 import { Route } from "../router/routes";
 
-export type LanguageStackParamList = {
-  [Route.TabNavigator]: undefined;
+export type HymnScreenStackParamList = {
+  [Route.HymnScreen]: undefined;
 };
 
 export interface Verse {
   verseName: string;
   text: string;
+  verseNumber?: number;
 }
 
 export interface HymnBook {
-  hymnNumber: number;
+  hymnNumber: string;
   hymnTitle: string;
   verses: Verse[];
 }

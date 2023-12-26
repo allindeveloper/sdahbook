@@ -1,19 +1,30 @@
 import { Block } from "galio-framework";
 import React from "react";
-import { StyleSheet, View } from "react-native";
+import { StyleSheet, TouchableOpacity, View } from "react-native";
 import { colors } from "../../styles/colors";
 import Space from "../Space/Space";
 import NativeText from "../Text/NativeText";
 import { Surface } from "react-native-paper";
 import { appPadding } from "../../constants/appConstants";
+import { HymnBook } from "../../types/hymn";
 export interface HymnItemProps {
   title: string;
-  hymnNumber: number;
+  hymnNumber: string;
+  handleClick: (item: HymnBook) => void;
+  item: HymnBook;
 }
 
-export const HymnItem: React.FC<HymnItemProps> = ({ title, hymnNumber }) => {
+export const HymnItem: React.FC<HymnItemProps> = ({
+  title,
+  item,
+  hymnNumber,
+  handleClick,
+}) => {
   return (
-    <Block style={hymnItemStyles.root}>
+    <TouchableOpacity
+      onPress={() => handleClick(item)}
+      style={hymnItemStyles.root}
+    >
       <Block left>
         <NativeText regular size={18}>
           Hymn {hymnNumber}
@@ -24,7 +35,7 @@ export const HymnItem: React.FC<HymnItemProps> = ({ title, hymnNumber }) => {
         </NativeText>
         <Space top={10} />
       </Block>
-    </Block>
+    </TouchableOpacity>
   );
 };
 

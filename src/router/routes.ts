@@ -8,6 +8,7 @@ export enum Route {
   Welcome = "Welcome",
   LanguageIntro = "LanguageIntro",
 
+  HymnScreen = "HymnScreen",
 }
 
 export enum TabRoute {
