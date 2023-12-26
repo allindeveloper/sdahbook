@@ -5,7 +5,7 @@ import { Header } from "../../components/Header/Header";
 import { useAppSelector } from "../../hooks/hooks";
 import NativeText from "../../components/Text/NativeText";
 import { hymnScreenStyles } from "../../styles/modules/hymnScreenStyles";
-import HymnVerse from "../../components/Hymn/HymnVerse";
+import HymnVerse from "../../components/Hymn/HymnView";
 import Space from "../../components/Space/Space";
 
 export const HymnScreen = () => {

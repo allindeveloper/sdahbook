@@ -9,7 +9,7 @@ export const colors = {
   GREY_ONE: "#A8B1BD",
   GREYONE: "#8C8C8C",
   GREY_TWO: "#F6F6F6",
-  GREY_THREE: "#F5F5F5",
+  VERSE_NUMBER: "#268580",
   BLACK: "#000000",
   BLACKONE: "#191919",
   TRANSPARENT: "transparent",

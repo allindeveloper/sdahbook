@@ -1,22 +1,26 @@
 import { Block } from "galio-framework";
 import React from "react";
 import { StyleSheet, TouchableOpacity, View } from "react-native";
-import { colors } from "../../styles/colors";
-import { appPadding } from "../../constants/appConstants";
 import { HymnBook, Verse } from "../../types/hymn";
 import NativeText from "../Text/NativeText";
 import { wp } from "../../utils/globalUtils";
-export interface HymnVerseProps {
+import { colors } from "../../styles/colors";
+export interface HymnViewProps {
   verse: Verse;
 }
 
-export const HymnVerse: React.FC<HymnVerseProps> = ({ verse }) => {
+export const HymnView: React.FC<HymnViewProps> = ({ verse }) => {
   return (
-    <View style={hymnVerseStyles.root}>
-      <NativeText bold size={18}>
+    <View style={hymnViewStyles.root}>
+      <NativeText
+        color={colors.VERSE_NUMBER}
+        defaultColor={false}
+        bold
+        size={18}
+      >
         {verse.verseNumber}
       </NativeText>
-      <Block style={hymnVerseStyles.verseTextContainer}>
+      <Block style={hymnViewStyles.verseTextContainer}>
         <NativeText medium size={17}>
           {verse.text}
         </NativeText>
@@ -25,7 +29,7 @@ export const HymnVerse: React.FC<HymnVerseProps> = ({ verse }) => {
   );
 };
 
-export const hymnVerseStyles = StyleSheet.create({
+export const hymnViewStyles = StyleSheet.create({
   root: {
     marginBottom: 50,
     marginTop: 40,
@@ -36,6 +40,9 @@ export const hymnVerseStyles = StyleSheet.create({
     flexWrap: "wrap",
     alignItems: "flex-start",
     alignSelf: "flex-start",
+    marginBottom: 10,
+    marginTop: 10,
+    width: wp(100),
   },
 });
-export default HymnVerse;
+export default HymnView;

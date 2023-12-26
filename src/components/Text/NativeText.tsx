@@ -1,8 +1,8 @@
-/* eslint-disable react-native/no-inline-styles */
 import React from "react";
 import { StyleProp, StyleSheet, Text, TextStyle } from "react-native";
 import { widthPercentageToDP } from "react-native-responsive-screen";
 import { colors } from "../../styles/colors";
+import { appPadding } from "../../constants/appConstants";
 
 export interface NativeTextProps {
   children?: React.ReactNode | React.ReactNode[] | undefined;
@@ -55,6 +55,7 @@ const NativeText = ({
           ? defaulStyles.mediumText
           : null,
         {
+          marginRight: 10,
           color: defaultColor ? colors.BLACKONE : color,
           fontSize: size,
           textAlign: center ? "center" : "auto",
