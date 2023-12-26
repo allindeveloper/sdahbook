@@ -1,17 +1,15 @@
-import React, { useEffect } from "react";
-import { View } from "react-native";
+import React, { useRef, useState } from "react";
+import { Animated, View } from "react-native";
 import useHymns from "../../hooks/useHymns";
 import { FlashList } from "@shopify/flash-list";
 import { HymnBook } from "../../types/hymn";
 import HymnItem from "../../components/Card/HymnItem";
 import { commonStyles } from "../../styles/commonStyles";
+import { Header } from "../../components/Header/Header";
+import { homeScreenStyles } from "../../styles/modules/homeScreenStyles";
 
 export const Home = () => {
   const { hymns } = useHymns();
-
-  useEffect(() => {
-    console.log("hymns", hymns);
-  }, []);
 
   const renderItem = React.useCallback(
     ({ item }: { item: HymnBook }) => (
@@ -21,11 +19,14 @@ export const Home = () => {
   );
   return (
     <View style={commonStyles.flexOne}>
-      <FlashList
-        data={hymns.data}
-        renderItem={renderItem}
-        estimatedItemSize={200}
-      />
+      <Header title="English" />
+      <View style={[homeScreenStyles.list]}>
+        <FlashList
+          data={hymns.data}
+          renderItem={renderItem}
+          estimatedItemSize={200}
+        />
+      </View>
     </View>
   );
 };

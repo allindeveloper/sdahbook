@@ -17,9 +17,9 @@ const LanguageScreen = () => {
     useNavigation<
       NativeStackNavigationProp<LanguageStackParamList, Route.TabNavigator>
     >();
-  const handleSetLanguage = (language: string) => {
+  const handleSetLanguage = async (language: string) => {
     setselectedLanguage(language);
-    AsyncStorage.setItem(StorageKeys.IsFirstTime, "1");
+    await AsyncStorage.setItem(StorageKeys.IsFirstTime, "1");
     navigation.navigate(Route.TabNavigator);
   };
   return (
