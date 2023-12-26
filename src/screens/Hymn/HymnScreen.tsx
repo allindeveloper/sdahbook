@@ -15,7 +15,10 @@ export const HymnScreen = () => {
     <View style={commonStyles.flexOne}>
       <Header title="English" />
       <View style={[hymnScreenStyles.root]}>
-        <ScrollView showsVerticalScrollIndicator={false}>
+        <ScrollView
+          contentContainerStyle={hymnScreenStyles.scrollView}
+          showsVerticalScrollIndicator={false}
+        >
           <NativeText bold size={25}>
             {currentHymn?.hymnNumber} - {currentHymn?.hymnTitle}
           </NativeText>
