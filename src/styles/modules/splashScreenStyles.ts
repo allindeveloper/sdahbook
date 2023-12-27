@@ -57,7 +57,7 @@ export const splashScreenStyles = StyleSheet.create({
   },
   welcomeButton: {
     position: "absolute",
-    bottom: heightPercentageToDP(3),
+    bottom: heightPercentageToDP(0),
     width: wp(100),
     alignContent: "center",
     justifyContent: "center",

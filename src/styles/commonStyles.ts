@@ -14,6 +14,7 @@ export const commonStyles = StyleSheet.create({
   },
   flexOne: {
     flex: 1,
+    flexGrow: 1,
     backgroundColor: colors.WHITE,
   },
   justRoot: {

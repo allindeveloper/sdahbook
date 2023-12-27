@@ -25,10 +25,18 @@ const WelcomeScreen = () => {
   };
   return (
     <View style={commonStyles.flexOne}>
-      <StatusBar barStyle="light-content" />
+      <StatusBar
+        barStyle="light-content"
+        backgroundColor="transparent"
+        translucent={true}
+      />
       <Swiper
         style={splashScreenStyles.wrapper}
         onIndexChanged={onIndexChanged}
+        containerStyle={{
+          height: "100%",
+          width: "100%",
+        }}
         dot={
           <View
             style={{
