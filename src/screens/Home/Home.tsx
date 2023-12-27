@@ -14,7 +14,7 @@ import { saveCurrentHymn } from "../../redux/reducers/hymnReducer";
 import { useAppDispatch } from "../../hooks/hooks";
 
 export const Home = () => {
-  const { hymns } = useHymns();
+  const { offlineHymn } = useHymns();
   const dispatch = useAppDispatch();
 
   const navigation =
@@ -45,7 +45,7 @@ export const Home = () => {
       <Header title="Hymns" />
       <View style={[homeScreenStyles.list]}>
         <FlashList
-          data={hymns.data}
+          data={offlineHymn}
           renderItem={renderItem}
           estimatedItemSize={200}
         />

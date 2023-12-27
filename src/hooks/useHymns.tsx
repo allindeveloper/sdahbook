@@ -1,9 +1,14 @@
 import { useQuery } from "@tanstack/react-query";
 import { getAllHymnsApiService } from "../services/hymn";
+import { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "./hooks";
+import { saveOfflineHymn } from "../redux/reducers/hymnReducer";
 type UseHymnsPayload = {
   searchQuery: string;
 };
 const useHymns = (payload?: UseHymnsPayload) => {
+  const { offlineHymn } = useAppSelector((state) => state.hymnReducer);
+  const dispatch = useAppDispatch();
   const hymns = useQuery(
     ["allhymns"],
     () =>
@@ -16,8 +21,14 @@ const useHymns = (payload?: UseHymnsPayload) => {
       retry: true,
     },
   );
+
+  useEffect(() => {
+    if (hymns.isSuccess && hymns.data) {
+      dispatch(saveOfflineHymn(hymns.data));
+    }
+  }, [hymns.isSuccess]);
   return {
-    hymns,
+    offlineHymn,
   };
 };
 

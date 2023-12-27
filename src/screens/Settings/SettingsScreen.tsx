@@ -19,7 +19,7 @@ import { Divider } from "react-native-paper";
 import Space from "../../components/Space/Space";
 
 export const SettingsScreen = () => {
-  const { hymns } = useHymns();
+  const { offlineHymn } = useHymns();
   const dispatch = useAppDispatch();
 
   const navigation =
