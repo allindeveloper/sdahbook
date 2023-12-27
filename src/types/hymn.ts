@@ -12,6 +12,7 @@ export interface Verse {
 
 export interface HymnBook {
   hymnNumber: string;
+  number: string;
   hymnTitle: string;
   verses: Verse[];
 }

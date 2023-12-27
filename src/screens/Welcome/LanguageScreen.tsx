@@ -4,7 +4,7 @@ import { colors } from "../../styles/colors";
 import NativeText from "../../components/Text/NativeText";
 import { commonStyles } from "../../styles/commonStyles";
 import { languageScreenStyles } from "../../styles/modules/languageScreenStyles";
-import { useNavigation } from "@react-navigation/native";
+import { CommonActions, useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { Route } from "../../router/routes";
 import { LanguageStackParamList } from "../../types/language";
@@ -20,7 +20,12 @@ const LanguageScreen = () => {
   const handleSetLanguage = async (language: string) => {
     setselectedLanguage(language);
     await AsyncStorage.setItem(StorageKeys.IsFirstTime, "1");
-    navigation.navigate(Route.TabNavigator);
+    navigation.dispatch(
+      CommonActions.reset({
+        index: 0,
+        routes: [{ name: Route.TabNavigator }],
+      }),
+    );
   };
   return (
     <ImageBackground
