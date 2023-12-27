@@ -1,17 +1,11 @@
-import React, { useCallback } from "react";
+import React from "react";
 import { ScrollView, TouchableOpacity, View } from "react-native";
-import useHymns from "../../hooks/useHymns";
-import { FlashList } from "@shopify/flash-list";
-import { HymnBook, HymnScreenStackParamList } from "../../types/hymn";
-import HymnItem from "../../components/Card/HymnItem";
+import { HymnScreenStackParamList } from "../../types/hymn";
 import { commonStyles } from "../../styles/commonStyles";
 import { Header } from "../../components/Header/Header";
-import { homeScreenStyles } from "../../styles/modules/homeScreenStyles";
 import { Route } from "../../router/routes";
 import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
-import { saveCurrentHymn } from "../../redux/reducers/hymnReducer";
-import { useAppDispatch } from "../../hooks/hooks";
 import NativeText from "../../components/Text/NativeText";
 import { settingsScreenStyles } from "../../styles/modules/settingsScreenStyles";
 import { colors } from "../../styles/colors";
@@ -19,9 +13,6 @@ import { Divider } from "react-native-paper";
 import Space from "../../components/Space/Space";
 
 export const SettingsScreen = () => {
-  const { offlineHymn } = useHymns();
-  const dispatch = useAppDispatch();
-
   const navigation =
     useNavigation<
       NativeStackNavigationProp<HymnScreenStackParamList, Route.HymnScreen>
