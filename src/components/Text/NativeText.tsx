@@ -2,12 +2,12 @@ import React from "react";
 import { StyleProp, StyleSheet, Text, TextStyle } from "react-native";
 import { widthPercentageToDP } from "react-native-responsive-screen";
 import { colors } from "../../styles/colors";
-import { appPadding } from "../../constants/appConstants";
 
 export interface NativeTextProps {
   children?: React.ReactNode | React.ReactNode[] | undefined;
   size?: TextStyle["fontSize"];
   fontWeight?: TextStyle["fontWeight"];
+  textTransform?: TextStyle["textTransform"];
   bold?: boolean;
   color?: string;
   style?: StyleProp<TextStyle>;
@@ -35,6 +35,7 @@ const NativeText = ({
   width = 50,
   maxWidth = 50,
   font,
+  textTransform,
   medium,
 }: NativeTextProps) => {
   return (
@@ -55,6 +56,7 @@ const NativeText = ({
           ? defaulStyles.mediumText
           : null,
         {
+          textTransform,
           marginRight: 10,
           color: defaultColor ? colors.BLACKONE : color,
           fontSize: size,

@@ -6,6 +6,7 @@ import HomeNavigator from "./HomeNavigator";
 import { Route, TabRoute } from "../router/routes";
 import { colors } from "../styles/colors";
 import { useTheme } from "react-native-paper";
+import SettingsNavigator from "./SettingsNavigator";
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -39,7 +40,7 @@ export const TabNavigator = () => {
         }}
         name={Route.SettingsTab}
       >
-        {() => <HomeNavigator />}
+        {() => <SettingsNavigator />}
       </Tab.Screen>
     </Tab.Navigator>
   );

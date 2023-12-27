@@ -17,6 +17,6 @@ export const homeRouter = [
     screen: HymnScreen,
     hideHiderTitle: false,
     title: "",
-    index: 1,
+    index: 2,
   },
 ];

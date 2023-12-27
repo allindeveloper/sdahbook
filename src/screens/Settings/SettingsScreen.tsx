@@ -1,5 +1,5 @@
 import React, { useCallback } from "react";
-import { View } from "react-native";
+import { ScrollView, TouchableOpacity, View } from "react-native";
 import useHymns from "../../hooks/useHymns";
 import { FlashList } from "@shopify/flash-list";
 import { HymnBook, HymnScreenStackParamList } from "../../types/hymn";
@@ -12,8 +12,13 @@ import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { saveCurrentHymn } from "../../redux/reducers/hymnReducer";
 import { useAppDispatch } from "../../hooks/hooks";
+import NativeText from "../../components/Text/NativeText";
+import { settingsScreenStyles } from "../../styles/modules/settingsScreenStyles";
+import { colors } from "../../styles/colors";
+import { Divider } from "react-native-paper";
+import Space from "../../components/Space/Space";
 
-export const Home = () => {
+export const SettingsScreen = () => {
   const { hymns } = useHymns();
   const dispatch = useAppDispatch();
 
@@ -21,35 +26,94 @@ export const Home = () => {
     useNavigation<
       NativeStackNavigationProp<HymnScreenStackParamList, Route.HymnScreen>
     >();
-  const handleClick = useCallback(
-    (item: HymnBook) => {
-      dispatch(saveCurrentHymn(item));
-      navigation.navigate(Route.HymnScreen);
-    },
-    [navigation],
-  );
-  const renderItem = React.useCallback(
-    ({ item }: { item: HymnBook }) => (
-      <HymnItem
-        item={item}
-        handleClick={handleClick}
-        title={item.hymnTitle}
-        hymnNumber={item.hymnNumber}
-      />
-    ),
-    [],
-  );
 
+  const handleSetFontSize = () => {
+    //
+  };
   return (
     <View style={commonStyles.flexOne}>
-      <Header title="English" />
-      <View style={[homeScreenStyles.list]}>
-        <FlashList
-          data={hymns.data}
-          renderItem={renderItem}
-          estimatedItemSize={200}
-        />
-      </View>
+      <Header title="Settings" />
+      <ScrollView>
+        <View style={[settingsScreenStyles.root]}>
+          <NativeText
+            textTransform="uppercase"
+            defaultColor={false}
+            color={colors.ORANGE}
+          >
+            Preferences
+          </NativeText>
+          <TouchableOpacity onPress={handleSetFontSize}>
+            <Space top={20} />
+            <NativeText defaultColor={false} color={colors.BLACKONE} size={18}>
+              Hymn Font Size
+            </NativeText>
+            <Space top={4} />
+            <NativeText defaultColor={false} color={colors.GREYONE} size={15}>
+              Large
+            </NativeText>
+          </TouchableOpacity>
+        </View>
+        <Divider />
+        <TouchableOpacity
+          style={[settingsScreenStyles.listItem]}
+          onPress={handleSetFontSize}
+        >
+          <NativeText defaultColor={false} color={colors.BLACK} size={18}>
+            Sync Hymn Content
+          </NativeText>
+          <Space top={4} />
+          <NativeText defaultColor={false} color={colors.GREYONE} size={15}>
+            Synced on {new Date().getFullYear()}
+          </NativeText>
+        </TouchableOpacity>
+        <Divider />
+        <View style={[settingsScreenStyles.root]}>
+          <NativeText
+            textTransform="uppercase"
+            defaultColor={false}
+            color={colors.ORANGE}
+          >
+            APP INFORMATION
+          </NativeText>
+          <TouchableOpacity onPress={handleSetFontSize}>
+            <Space top={20} />
+            <NativeText defaultColor={false} color={colors.BLACKONE} size={18}>
+              Version Code
+            </NativeText>
+            <Space top={4} />
+            <NativeText defaultColor={false} color={colors.GREYONE} size={15}>
+              1.0.1
+            </NativeText>
+          </TouchableOpacity>
+        </View>
+        <Divider />
+        <TouchableOpacity
+          style={[settingsScreenStyles.listItem]}
+          onPress={handleSetFontSize}
+        >
+          <NativeText defaultColor={false} color={colors.BLACK} size={18}>
+            Developer
+          </NativeText>
+          <Space top={4} />
+          <NativeText defaultColor={false} color={colors.GREYONE} size={15}>
+            allindeveloper
+          </NativeText>
+        </TouchableOpacity>
+        <Divider />
+        <TouchableOpacity
+          style={[settingsScreenStyles.listItem]}
+          onPress={handleSetFontSize}
+        >
+          <NativeText defaultColor={false} color={colors.BLACK} size={18}>
+            Donate to
+          </NativeText>
+          <Space top={4} />
+          <NativeText defaultColor={false} color={colors.GREYONE} size={15}>
+            Help support future work!
+          </NativeText>
+        </TouchableOpacity>
+        <Divider />
+      </ScrollView>
     </View>
   );
 };

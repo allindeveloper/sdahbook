@@ -1,7 +1,7 @@
 import { Block } from "galio-framework";
 import React from "react";
-import { StyleSheet, TouchableOpacity, View } from "react-native";
-import { HymnBook, Verse } from "../../types/hymn";
+import { StyleSheet, View } from "react-native";
+import { Verse } from "../../types/hymn";
 import NativeText from "../Text/NativeText";
 import { wp } from "../../utils/globalUtils";
 import { colors } from "../../styles/colors";

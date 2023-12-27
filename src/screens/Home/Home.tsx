@@ -42,7 +42,7 @@ export const Home = () => {
 
   return (
     <View style={commonStyles.flexOne}>
-      <Header title="English" />
+      <Header title="Hymns" />
       <View style={[homeScreenStyles.list]}>
         <FlashList
           data={hymns.data}

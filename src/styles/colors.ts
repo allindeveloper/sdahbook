@@ -1,5 +1,6 @@
 export const colors = {
   PRIMARY: "#35B8B2",
+  ORANGE: "#f37b18",
   PRIMARY_BOLD: "#2fa49f",
   WHITE: "#ffffff",
   TAB_BACKGROUND: "#effaf9",

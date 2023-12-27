@@ -7,7 +7,7 @@ export enum Route {
   Splash = "Splash",
   Welcome = "Welcome",
   LanguageIntro = "LanguageIntro",
-
+  SettingsScreen = "SettingsScreen",
   HymnScreen = "HymnScreen",
 }
 
