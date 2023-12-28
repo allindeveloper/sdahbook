@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useRef, useState } from "react";
 import { ScrollView, TouchableOpacity, View } from "react-native";
 import { HymnScreenStackParamList } from "../../types/hymn";
 import { commonStyles } from "../../styles/commonStyles";
@@ -11,18 +11,24 @@ import { settingsScreenStyles } from "../../styles/modules/settingsScreenStyles"
 import { colors } from "../../styles/colors";
 import { Divider } from "react-native-paper";
 import Space from "../../components/Space/Space";
+import Fontsize from "../../modules/preferences/Fontsize";
 
 export const SettingsScreen = () => {
+  const [showFontSizeModal, setshowFontSizeModal] = useState(false);
   const navigation =
     useNavigation<
       NativeStackNavigationProp<HymnScreenStackParamList, Route.HymnScreen>
     >();
 
   const handleSetFontSize = () => {
-    //
+    toggleFontSizeModal();
+  };
+
+  const toggleFontSizeModal = () => {
+    setshowFontSizeModal(!showFontSizeModal);
   };
   return (
-    <View style={commonStyles.flexOne}>
+    <>
       <Header title="Settings" />
       <ScrollView>
         <View style={[settingsScreenStyles.root]}>
@@ -105,6 +111,12 @@ export const SettingsScreen = () => {
         </TouchableOpacity>
         <Divider />
       </ScrollView>
-    </View>
+
+      <Fontsize
+        title="Font Size"
+        hideDialog={toggleFontSizeModal}
+        isVisible={showFontSizeModal}
+      />
+    </>
   );
 };

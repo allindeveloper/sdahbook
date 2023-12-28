@@ -8,6 +8,6 @@ export const settingsRouter = [
     screen: SettingsScreen,
     hideHiderTitle: false,
     title: "",
-    index: 1,
+    index: 0,
   },
 ];
