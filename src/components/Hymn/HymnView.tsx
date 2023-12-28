@@ -5,11 +5,14 @@ import { Verse } from "../../types/hymn";
 import NativeText from "../Text/NativeText";
 import { wp } from "../../utils/globalUtils";
 import { colors } from "../../styles/colors";
+import { useAppSelector } from "../../hooks/hooks";
+import { FontSizes } from "../../types/settings";
 export interface HymnViewProps {
   verse: Verse;
 }
 
 export const HymnView: React.FC<HymnViewProps> = ({ verse }) => {
+  const { currentFont } = useAppSelector((state) => state.settingsReducer);
   return (
     <View style={hymnViewStyles.root}>
       <NativeText
@@ -21,7 +24,13 @@ export const HymnView: React.FC<HymnViewProps> = ({ verse }) => {
         {verse.verseNumber}
       </NativeText>
       <Block style={hymnViewStyles.verseTextContainer}>
-        <NativeText medium size={17}>
+        <NativeText
+          medium={currentFont === FontSizes.Medium}
+          bold={currentFont === FontSizes.Bold}
+          regular={currentFont === FontSizes.Regular}
+          semiBold={currentFont === FontSizes.SemiBold}
+          size={17}
+        >
           {verse.text}
         </NativeText>
       </Block>

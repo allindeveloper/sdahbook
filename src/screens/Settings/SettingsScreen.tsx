@@ -1,7 +1,6 @@
-import React, { useRef, useState } from "react";
+import React, { useState } from "react";
 import { ScrollView, TouchableOpacity, View } from "react-native";
 import { HymnScreenStackParamList } from "../../types/hymn";
-import { commonStyles } from "../../styles/commonStyles";
 import { Header } from "../../components/Header/Header";
 import { Route } from "../../router/routes";
 import { useNavigation } from "@react-navigation/native";
@@ -12,6 +11,8 @@ import { colors } from "../../styles/colors";
 import { Divider } from "react-native-paper";
 import Space from "../../components/Space/Space";
 import Fontsize from "../../modules/preferences/Fontsize";
+import { useAppSelector } from "../../hooks/hooks";
+import { capitalizeString } from "../../utils/stringUtils";
 
 export const SettingsScreen = () => {
   const [showFontSizeModal, setshowFontSizeModal] = useState(false);
@@ -19,6 +20,7 @@ export const SettingsScreen = () => {
     useNavigation<
       NativeStackNavigationProp<HymnScreenStackParamList, Route.HymnScreen>
     >();
+  const { currentFont } = useAppSelector((state) => state.settingsReducer);
 
   const handleSetFontSize = () => {
     toggleFontSizeModal();
@@ -46,7 +48,7 @@ export const SettingsScreen = () => {
             </NativeText>
             <Space top={4} />
             <NativeText defaultColor={false} color={colors.GREYONE} size={15}>
-              Large
+              {capitalizeString(currentFont)}
             </NativeText>
           </TouchableOpacity>
         </View>

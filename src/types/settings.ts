@@ -1,5 +1,6 @@
 export enum FontSizes  {
-    Small = "small",
+    Regular = "regular",
     Medium = "medium",
-    Large = "large",
+    Bold = "bold",
+    SemiBold = "semiBold",
 }
