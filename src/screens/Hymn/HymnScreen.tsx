@@ -13,7 +13,7 @@ export const HymnScreen = () => {
 
   return (
     <View style={commonStyles.flexOne}>
-      <Header title={`Hymn ${currentHymn?.number}`} />
+      <Header showBack title={`Hymn ${currentHymn?.number}`} />
       <View style={[hymnScreenStyles.root]}>
         <ScrollView
           contentContainerStyle={hymnScreenStyles.scrollView}
