@@ -10,7 +10,7 @@ import {
   ViewProps,
 } from "react-native";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
-import AntDesign from "react-native-vector-icons/AntDesign";
+import Ionicons from "react-native-vector-icons/Ionicons";
 import { colors } from "../../styles/colors";
 import { appPadding } from "../../constants/appConstants";
 import NativeText from "../Text/NativeText";
@@ -102,7 +102,7 @@ export const Header: React.FC<PageHeaderProps> = ({
           style={rightContainerStyle || styles.rightItem}
         >
           {showSearch ? (
-            <AntDesign name="search1" color={colors.BLACKONE} size={28} />
+            <Ionicons name="keypad" color={colors.BLACKONE} size={28} />
           ) : (
             rightNode
           )}
@@ -130,8 +130,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     flexDirection: "row",
     justifyContent: "space-between",
-    paddingTop: Platform.OS === "ios" ? 50 : 20,
-    paddingBottom: 20,
+    paddingTop: Platform.OS === "ios" ? 50 : 40,
+    paddingBottom: 18,
     paddingLeft: appPadding - 5,
     paddingRight: appPadding,
     backgroundColor: colors.PRIMARY,
@@ -140,8 +140,6 @@ const styles = StyleSheet.create({
   leftItem: {
     flex: 1,
     paddingLeft: 4,
-    paddingTop: 4,
-    paddingBottom: 4,
   },
   rightItem: {
     flex: 1,

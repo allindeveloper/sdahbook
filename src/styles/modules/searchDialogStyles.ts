@@ -1,6 +1,7 @@
 import { StyleSheet } from "react-native";
 import { heightPercentageToDP } from "react-native-responsive-screen";
 import { colors } from "../colors";
+import { appPadding } from "../../constants/appConstants";
 
 export const searchDialogStyles = StyleSheet.create({
   root: {
@@ -23,8 +24,36 @@ export const searchDialogStyles = StyleSheet.create({
     alignContent: "center",
     alignItems: "center",
   },
+  go: {
+    backgroundColor: colors.GRAY,
+    height: 70,
+    borderRadius: 50,
+    width: 70,
+    textAlign: "center",
+    justifyContent: "center",
+    alignContent: "center",
+    alignItems: "center",
+    position: "absolute",
+    right: -110,
+  },
   searchQuery: {
-    marginBottom: 20
+    display: "flex",
+    justifyContent: "center",
+    flexDirection: "row",
+    alignContent: "center",
+    alignItems: "center",
+    position: "relative",
+  },
+  searchQueryText: {
+    alignContent: "center",
+    alignItems: "center"
+  },
+  backSpace: {
+    backgroundColor: colors.GRAY,
+    padding: 10,
+    borderRadius: 4,
+    position: "absolute",
+    right: appPadding + 25,
   },
   listTop: {
     marginTop: 100,
