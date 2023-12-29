@@ -9,7 +9,7 @@ import NativeText from "../components/Text/NativeText";
 import { searchDialogStyles } from "../styles/modules/searchDialogStyles";
 import { Block } from "galio-framework";
 import { colors } from "../styles/colors";
-import { Pressable, TouchableHighlight, View } from "react-native";
+import { Pressable, TouchableHighlight } from "react-native";
 import Ionicons from "react-native-vector-icons/Ionicons";
 import { Divider } from "react-native-paper";
 import Space from "../components/Space/Space";

@@ -15,6 +15,17 @@ export const HymnView: React.FC<HymnViewProps> = ({ verse }) => {
   const { currentFont } = useAppSelector((state) => state.settingsReducer);
   return (
     <View style={hymnViewStyles.root}>
+      {verse.isRefrain && (
+        <NativeText
+          color={colors.ORANGE}
+          defaultColor={false}
+          bold
+          textTransform="uppercase"
+          size={18}
+        >
+          {"Chorus"}
+        </NativeText>
+      )}
       <NativeText
         color={colors.VERSE_NUMBER}
         defaultColor={false}
