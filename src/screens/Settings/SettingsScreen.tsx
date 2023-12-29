@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { ScrollView, TouchableOpacity, View } from "react-native";
+import { Linking, ScrollView, TouchableOpacity, View } from "react-native";
 import { Header } from "../../components/Header/Header";
 import NativeText from "../../components/Text/NativeText";
 import { settingsScreenStyles } from "../../styles/modules/settingsScreenStyles";
@@ -12,6 +12,9 @@ import { capitalizeString } from "../../utils/stringUtils";
 import DeviceInfo from "react-native-device-info";
 import useHymns from "../../hooks/useHymns";
 import useToast from "../../hooks/useAppToast";
+import { Block } from "galio-framework";
+import { ToastPosition, toast } from "@backpackapp-io/react-native-toast";
+import NetInfo from "@react-native-community/netinfo";
 
 export const SettingsScreen = () => {
   const { dispatchToast } = useToast();
@@ -28,16 +31,33 @@ export const SettingsScreen = () => {
     setshowFontSizeModal(!showFontSizeModal);
   };
 
-  const handleSyncContent = () => {
+  const handleSyncContent = async () => {
+    const netInfoState = await NetInfo.fetch();
+    if (netInfoState.isConnected) {
+      dispatchToast({
+        message: "Please check your network.",
+      });
+      return;
+    }
     hymns.refetch();
+    toast.promise(
+      hymns.refetch(),
+      {
+        loading: "Hymn syncing..",
+        success: (data) => `Successfully synced`,
+        error: (err) => `Could not sync`,
+      },
+      {
+        position: ToastPosition.BOTTOM,
+        duration: 2000,
+      },
+    );
   };
 
-  useEffect(() => {
-    if (hymns.isSuccess) {
-      console.log("Successfully fetched");
-      // show toast
-    }
-  }, [hymns]);
+  const handleOpenProfile = () => {
+    const url = "https://github.com/allindeveloper";
+    Linking.openURL(url);
+  };
   return (
     <>
       <Header title="Settings" />
@@ -83,7 +103,7 @@ export const SettingsScreen = () => {
           >
             APP INFORMATION
           </NativeText>
-          <TouchableOpacity onPress={handleSetFontSize}>
+          <Block>
             <Space top={20} />
             <NativeText defaultColor={false} color={colors.BLACKONE} size={18}>
               Version Code
@@ -92,12 +112,12 @@ export const SettingsScreen = () => {
             <NativeText defaultColor={false} color={colors.GREYONE} size={15}>
               {DeviceInfo.getVersion()}
             </NativeText>
-          </TouchableOpacity>
+          </Block>
         </View>
         <Divider />
         <TouchableOpacity
           style={[settingsScreenStyles.listItem]}
-          onPress={handleSetFontSize}
+          onPress={handleOpenProfile}
         >
           <NativeText defaultColor={false} color={colors.BLACK} size={18}>
             Developer

@@ -1,8 +1,8 @@
-import { Toast, toast } from "@backpackapp-io/react-native-toast";
+import { ToastPosition, toast } from "@backpackapp-io/react-native-toast";
 
 type ToastDispatchPayload = {
   message: string;
-  position?: Toast["position"];
+  position?: ToastPosition;
 };
 const useToast = () => {
   const dispatchToast = ({ message, position }: ToastDispatchPayload) => {
