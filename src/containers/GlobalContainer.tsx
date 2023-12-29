@@ -95,6 +95,8 @@ export const GlobalContainer = () => {
 
     return numbers;
   };
+  const disableSearchButton =
+    searchQuery.length === 0 || searchQuery.length > 3;
   return (
     <>
       <FullModal
@@ -132,7 +134,13 @@ export const GlobalContainer = () => {
               0
             </NativeText>
           </TouchableHighlight>
-          <Pressable onPress={handleSearchNumber} style={searchDialogStyles.go}>
+          <Pressable
+            onPress={handleSearchNumber}
+            style={[
+              searchDialogStyles.go,
+              disableSearchButton && searchDialogStyles.eachNumberDisabled,
+            ]}
+          >
             <Ionicons name="enter-outline" color={colors.BLACKONE} size={35} />
           </Pressable>
         </Block>

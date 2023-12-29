@@ -9,6 +9,7 @@ export const colors = {
   GREY: "#E4E4E4",
   GREY_ONE: "#A8B1BD",
   GREYONE: "#8C8C8C",
+  DISABLED: "#eeeeee",
   DARK_GREY: "#9e9e9e",
   VERSE_NUMBER: "#268580",
   BLACK: "#000000",

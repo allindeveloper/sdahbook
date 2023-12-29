@@ -12,7 +12,7 @@ export const searchDialogStyles = StyleSheet.create({
   content: {
     paddingTop: 20,
     paddingBottom: 20,
-    borderRadius: 30
+    borderRadius: 30,
   },
   eachNumber: {
     backgroundColor: colors.GRAY,
@@ -24,8 +24,11 @@ export const searchDialogStyles = StyleSheet.create({
     alignContent: "center",
     alignItems: "center",
   },
+  eachNumberDisabled: {
+    backgroundColor: colors.DISABLED,
+  },
   go: {
-    backgroundColor: colors.GRAY,
+    backgroundColor: colors.PRIMARY,
     height: 70,
     borderRadius: 50,
     width: 70,
@@ -46,7 +49,7 @@ export const searchDialogStyles = StyleSheet.create({
   },
   searchQueryText: {
     alignContent: "center",
-    alignItems: "center"
+    alignItems: "center",
   },
   backSpace: {
     backgroundColor: colors.GRAY,
