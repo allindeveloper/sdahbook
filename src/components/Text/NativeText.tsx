@@ -20,6 +20,7 @@ export interface NativeTextProps {
   width?: number;
   maxWidth?: number;
   font?: "default" | "cursive";
+  marginRight?: number;
 }
 const NativeText = ({
   style,
@@ -35,6 +36,7 @@ const NativeText = ({
   width = 50,
   maxWidth = 50,
   font,
+  marginRight,
   textTransform,
   medium,
 }: NativeTextProps) => {
@@ -57,7 +59,7 @@ const NativeText = ({
           : null,
         {
           textTransform,
-          marginRight: 10,
+          marginRight: marginRight,
           color: defaultColor ? colors.BLACKONE : color,
           fontSize: size,
           textAlign: center ? "center" : "auto",

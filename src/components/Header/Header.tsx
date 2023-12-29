@@ -5,14 +5,18 @@ import {
   Pressable,
   StatusBar,
   StyleSheet,
+  TouchableOpacity,
   View,
   ViewProps,
 } from "react-native";
 import MaterialIcons from "react-native-vector-icons/MaterialIcons";
+import AntDesign from "react-native-vector-icons/AntDesign";
 import { colors } from "../../styles/colors";
 import { appPadding } from "../../constants/appConstants";
 import NativeText from "../Text/NativeText";
 import { Block } from "galio-framework";
+import { toggleHymnSearchDialog } from "../../redux/reducers/hymnReducer";
+import { useAppDispatch } from "../../hooks/hooks";
 
 type PageHeaderProps = {
   leftNode?: JSX.Element;
@@ -23,6 +27,7 @@ type PageHeaderProps = {
   rightContainerStyle?: ViewProps["style"] | null;
   leftContainerStyle?: ViewProps["style"] | null;
   showBack?: boolean;
+  showSearch?: boolean;
 };
 
 export const Header: React.FC<PageHeaderProps> = ({
@@ -33,14 +38,21 @@ export const Header: React.FC<PageHeaderProps> = ({
   leftContainerStyle = null,
   showBack,
   title,
+  showSearch,
+  handleOnPressRightItem,
 }) => {
   const navigation = useNavigation<any>();
+  const dispatch = useAppDispatch();
+
   const handeBack = () => {
     if (showBack) {
       navigation.goBack();
     } else {
       handleOnPressLeftItem?.();
     }
+  };
+  const handleSearch = () => {
+    dispatch(toggleHymnSearchDialog(true));
   };
 
   return (
@@ -85,6 +97,16 @@ export const Header: React.FC<PageHeaderProps> = ({
             </NativeText>
           )}
         </Pressable>
+        <TouchableOpacity
+          onPress={handleSearch}
+          style={rightContainerStyle || styles.rightItem}
+        >
+          {showSearch ? (
+            <AntDesign name="search1" color={colors.BLACKONE} size={28} />
+          ) : (
+            rightNode
+          )}
+        </TouchableOpacity>
       </View>
     </View>
   );
@@ -123,7 +145,7 @@ const styles = StyleSheet.create({
   },
   rightItem: {
     flex: 1,
-    paddingRight: 4,
+    paddingRight: 10,
     paddingTop: 4,
     alignItems: "flex-end",
   },

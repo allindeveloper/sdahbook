@@ -30,6 +30,7 @@ export const HymnView: React.FC<HymnViewProps> = ({ verse }) => {
           regular={currentFont === FontSizes.Regular}
           semiBold={currentFont === FontSizes.SemiBold}
           size={17}
+          marginRight={20}
         >
           {verse.text}
         </NativeText>

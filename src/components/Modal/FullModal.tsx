@@ -1,31 +1,45 @@
 import React from "react";
-import { StyleSheet } from "react-native";
+import { StatusBar, StyleProp, StyleSheet, ViewStyle } from "react-native";
 import { Modal } from "react-native-paper";
 import { appPadding } from "../../constants/appConstants";
+import { heightPercentageToDP } from "react-native-responsive-screen";
 
 export interface FullModalProps {
   hideModal: () => void;
   children: React.ReactNode;
   visible: boolean;
+  height?: number;
+  style?: StyleProp<ViewStyle>;
+  contentStyle?: StyleProp<ViewStyle>;
 }
-const FullModal = ({ hideModal, visible, children }: FullModalProps) => {
+const FullModal = ({
+  hideModal,
+  style,
+  contentStyle,
+  visible,
+  children,
+  height,
+}: FullModalProps) => {
   return (
-    <Modal
-      visible={visible}
-      onDismiss={hideModal}
-      contentContainerStyle={fullModalStyles.container}
-    >
-      {children}
-    </Modal>
+    <>
+      <StatusBar translucent backgroundColor="transparent" />
+      <Modal
+        visible={visible}
+        onDismiss={hideModal}
+        style={style}
+        contentContainerStyle={[fullModalStyles.container, contentStyle]}
+      >
+        {children}
+      </Modal>
+    </>
   );
 };
 
 const fullModalStyles = StyleSheet.create({
   container: {
     backgroundColor: "white",
-    padding: 20,
     margin: appPadding,
-    zIndex: 9105,
+    flex: 1,
   },
 });
 

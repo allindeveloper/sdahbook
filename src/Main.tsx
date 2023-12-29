@@ -9,11 +9,10 @@ import { Provider } from "react-redux";
 import { persistStore } from "redux-persist";
 import { PersistGate } from "redux-persist/integration/react";
 import { store } from "./redux/store";
-import { MainContainer } from "./containers/MainContainer";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { PaperProvider, Portal } from "react-native-paper";
-import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { SafeAreaProvider } from "react-native-safe-area-context";
+import { GlobalContainer } from "./containers/GlobalContainer";
 const Stack = createNativeStackNavigator();
 
 const persistor = persistStore(store);
@@ -30,36 +29,38 @@ const Main = () => {
     COLORS: { PRIMARY: colors.BLACKONE },
   };
   return (
-    <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
-        <QueryClientProvider client={queryClient}>
-          <NavigationContainer>
-            <GalioProvider theme={customTheme}>
-              <PaperProvider>
-                <Portal>
-                  <Stack.Navigator>
-                    {router.map((route: Router, index: React.Key | null) => (
-                      <Stack.Screen
-                        key={index}
-                        name={route.route}
-                        options={{
-                          headerShown: route.showHeader,
-                          headerTitle: route.title,
-                          gestureEnabled: route.gestureEnabled,
-                        }}
-                      >
-                        {(props) => <route.screen {...props} />}
-                      </Stack.Screen>
-                    ))}
-                  </Stack.Navigator>
-                </Portal>
-              </PaperProvider>
-              <MainContainer />
-            </GalioProvider>
-          </NavigationContainer>
-        </QueryClientProvider>
-      </PersistGate>
-    </Provider>
+    <SafeAreaProvider>
+      <Provider store={store}>
+        <PersistGate loading={null} persistor={persistor}>
+          <QueryClientProvider client={queryClient}>
+            <NavigationContainer>
+              <GalioProvider theme={customTheme}>
+                <PaperProvider>
+                  <Portal>
+                    <Stack.Navigator>
+                      {router.map((route: Router, index: React.Key | null) => (
+                        <Stack.Screen
+                          key={index}
+                          name={route.route}
+                          options={{
+                            headerShown: route.showHeader,
+                            headerTitle: route.title,
+                            gestureEnabled: route.gestureEnabled,
+                          }}
+                        >
+                          {(props) => <route.screen {...props} />}
+                        </Stack.Screen>
+                      ))}
+                    </Stack.Navigator>
+                  </Portal>
+                </PaperProvider>
+                <GlobalContainer />
+              </GalioProvider>
+            </NavigationContainer>
+          </QueryClientProvider>
+        </PersistGate>
+      </Provider>
+    </SafeAreaProvider>
   );
 };
 
