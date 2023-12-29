@@ -6,10 +6,7 @@ import { splashRouter } from "../router/splashRouter";
 const Stack = createNativeStackNavigator();
 const SplashNavigator = () => {
   return (
-    <Stack.Navigator
-      initialRouteName={Route.SplashNavigator}
-      screenOptions={{}}
-    >
+    <Stack.Navigator initialRouteName={Route.SplashNavigator}>
       {splashRouter.map((route: any, index: React.Key | null | undefined) => (
         <Stack.Screen
           key={index}

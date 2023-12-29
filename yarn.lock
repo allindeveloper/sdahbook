@@ -1162,6 +1162,11 @@
     "@babel/helper-validator-identifier" "^7.22.20"
     to-fast-properties "^2.0.0"
 
+"@backpackapp-io/react-native-toast@^0.10.0":
+  version "0.10.0"
+  resolved "https://registry.yarnpkg.com/@backpackapp-io/react-native-toast/-/react-native-toast-0.10.0.tgz#08a765b7fecab46f430b246da148ee184c5dd963"
+  integrity sha512-kuFAkTu+HlCoIiTbHgKi0lXwpQzntrhzMy4LorJyXb8SdiPEMs9ZiCzHYUzsgIga4xjlY73wxlgwyo4QWa7JZA==
+
 "@bcoe/v8-coverage@^0.2.3":
   version "0.2.3"
   resolved "https://registry.yarnpkg.com/@bcoe/v8-coverage/-/v8-coverage-0.2.3.tgz#75a2e8b51cb758a7553d6804a5932d7aace75c39"
@@ -5901,6 +5906,11 @@ react-native-config@^1.5.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/react-native-config/-/react-native-config-1.5.1.tgz#73c94f511493e9b7ff9350cdf351d203a1b05acc"
   integrity sha512-g1xNgt1tV95FCX+iWz6YJonxXkQX0GdD3fB8xQtR1GUBEqweB9zMROW77gi2TygmYmUkBI7LU4pES+zcTyK4HA==
+
+react-native-device-info@^10.12.0:
+  version "10.12.0"
+  resolved "https://registry.yarnpkg.com/react-native-device-info/-/react-native-device-info-10.12.0.tgz#be4e71cbcc9a05e8643b1a419a4450d4cef9bbcc"
+  integrity sha512-gnBkjyZNEqRd+5BNrdzuvmlraHTCH/to2x0Gp9rtDt0O9xWWW1MTYohUVWX9A0Ad2HVYcGanDCIvjWp4ngMZFg==
 
 react-native-gesture-handler@^2.14.0:
   version "2.14.0"

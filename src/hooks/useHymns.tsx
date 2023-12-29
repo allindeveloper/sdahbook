@@ -29,6 +29,7 @@ const useHymns = (payload?: UseHymnsPayload) => {
   }, [hymns.isSuccess]);
   return {
     offlineHymn,
+    hymns,
   };
 };
 

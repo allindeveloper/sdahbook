@@ -1,10 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { ScrollView, TouchableOpacity, View } from "react-native";
-import { HymnScreenStackParamList } from "../../types/hymn";
 import { Header } from "../../components/Header/Header";
-import { Route } from "../../router/routes";
-import { useNavigation } from "@react-navigation/native";
-import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import NativeText from "../../components/Text/NativeText";
 import { settingsScreenStyles } from "../../styles/modules/settingsScreenStyles";
 import { colors } from "../../styles/colors";
@@ -13,13 +9,15 @@ import Space from "../../components/Space/Space";
 import Fontsize from "../../modules/preferences/Fontsize";
 import { useAppSelector } from "../../hooks/hooks";
 import { capitalizeString } from "../../utils/stringUtils";
+import DeviceInfo from "react-native-device-info";
+import useHymns from "../../hooks/useHymns";
+import useToast from "../../hooks/useAppToast";
 
 export const SettingsScreen = () => {
+  const { dispatchToast } = useToast();
+  const { hymns } = useHymns();
   const [showFontSizeModal, setshowFontSizeModal] = useState(false);
-  const navigation =
-    useNavigation<
-      NativeStackNavigationProp<HymnScreenStackParamList, Route.HymnScreen>
-    >();
+
   const { currentFont } = useAppSelector((state) => state.settingsReducer);
 
   const handleSetFontSize = () => {
@@ -29,6 +27,17 @@ export const SettingsScreen = () => {
   const toggleFontSizeModal = () => {
     setshowFontSizeModal(!showFontSizeModal);
   };
+
+  const handleSyncContent = () => {
+    hymns.refetch();
+  };
+
+  useEffect(() => {
+    if (hymns.isSuccess) {
+      console.log("Successfully fetched");
+      // show toast
+    }
+  }, [hymns]);
   return (
     <>
       <Header title="Settings" />
@@ -55,7 +64,7 @@ export const SettingsScreen = () => {
         <Divider />
         <TouchableOpacity
           style={[settingsScreenStyles.listItem]}
-          onPress={handleSetFontSize}
+          onPress={handleSyncContent}
         >
           <NativeText defaultColor={false} color={colors.BLACK} size={18}>
             Sync Hymn Content
@@ -81,7 +90,7 @@ export const SettingsScreen = () => {
             </NativeText>
             <Space top={4} />
             <NativeText defaultColor={false} color={colors.GREYONE} size={15}>
-              1.0.1
+              {DeviceInfo.getVersion()}
             </NativeText>
           </TouchableOpacity>
         </View>
