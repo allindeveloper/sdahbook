@@ -128,19 +128,6 @@ export const SettingsScreen = () => {
           </NativeText>
         </TouchableOpacity>
         <Divider />
-        <TouchableOpacity
-          style={[settingsScreenStyles.listItem]}
-          onPress={handleSetFontSize}
-        >
-          <NativeText defaultColor={false} color={colors.BLACK} size={18}>
-            Donate to
-          </NativeText>
-          <Space top={4} />
-          <NativeText defaultColor={false} color={colors.GREYONE} size={15}>
-            Help support future work!
-          </NativeText>
-        </TouchableOpacity>
-        <Divider />
       </ScrollView>
 
       <Fontsize
