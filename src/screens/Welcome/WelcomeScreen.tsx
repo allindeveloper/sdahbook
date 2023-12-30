@@ -1,5 +1,5 @@
 import React from "react";
-import { ImageBackground, StatusBar, View } from "react-native";
+import { Image, ImageBackground, StatusBar, View } from "react-native";
 import { colors } from "../../styles/colors";
 import { useNavigation } from "@react-navigation/native";
 import NativeText from "../../components/Text/NativeText";
@@ -10,13 +10,14 @@ import AppButton from "../../components/Button/AppButton";
 import { Route } from "../../router/routes";
 import type { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { WelcomeStackParamList } from "../../types/welcome";
+import { welcomeScreenStyles } from "../../styles/modules/welcomeScreenStyles";
+import { Block } from "galio-framework";
 
 const WelcomeScreen = () => {
   const navigation =
     useNavigation<
       NativeStackNavigationProp<WelcomeStackParamList, Route.LanguageIntro>
     >();
-
   const onIndexChanged = (index: number) => {
     //
   };
@@ -24,46 +25,17 @@ const WelcomeScreen = () => {
     navigation.navigate(Route.LanguageIntro);
   };
   return (
-    <View style={commonStyles.flexOne}>
+    <View style={[commonStyles.flexOne]}>
       <StatusBar
         barStyle="light-content"
         backgroundColor="transparent"
         translucent={true}
       />
       <Swiper
-        style={splashScreenStyles.wrapper}
         onIndexChanged={onIndexChanged}
-        containerStyle={{
-          height: "100%",
-          width: "100%",
-        }}
-        dot={
-          <View
-            style={{
-              backgroundColor: "rgba(255,255,255,.3)",
-              width: 13,
-              height: 13,
-              borderRadius: 7,
-              marginLeft: 7,
-              marginRight: 7,
-            }}
-          />
-        }
-        activeDot={
-          <View
-            style={{
-              backgroundColor: "#fff",
-              width: 13,
-              height: 13,
-              borderRadius: 7,
-              marginLeft: 7,
-              marginRight: 7,
-            }}
-          />
-        }
-        paginationStyle={{
-          bottom: 80,
-        }}
+        dot={<View style={welcomeScreenStyles.dot} />}
+        activeDot={<View style={welcomeScreenStyles.activeDot} />}
+        paginationStyle={welcomeScreenStyles.pagination}
         loop={false}
       >
         <View style={splashScreenStyles.slide}>
@@ -72,6 +44,12 @@ const WelcomeScreen = () => {
             source={require("../../assets/images/splashimageone.webp")}
             resizeMode="cover"
           >
+            <Block>
+              <Image
+                source={require("../../assets/images/sdahbook.png")}
+                style={splashScreenStyles.logoImage}
+              />
+            </Block>
             <View style={splashScreenStyles.imageView}>
               <NativeText
                 defaultColor={false}
@@ -121,7 +99,16 @@ const WelcomeScreen = () => {
               </NativeText>
             </View>
             <View style={splashScreenStyles.welcomeButton}>
-              <AppButton onPress={onPressWelcome} title="Welcome" />
+              <AppButton
+                onPress={onPressWelcome}
+                style={{
+                  borderColor: colors.GRAY,
+                  borderRadius: 1,
+                  borderStyle: "solid",
+                  borderWidth: 1,
+                }}
+                title="Welcome"
+              />
             </View>
           </ImageBackground>
         </View>

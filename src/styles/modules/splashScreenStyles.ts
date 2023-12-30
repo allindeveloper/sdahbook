@@ -4,12 +4,20 @@ import { heightPercentageToDP } from "react-native-responsive-screen";
 const { width, height } = Dimensions.get("window");
 
 export const splashScreenStyles = StyleSheet.create({
-  wrapper: {},
   slide1: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
     backgroundColor: "#9DD6EB",
+  },
+  logoImage: {
+    height: 110,
+    width: 110,
+    display: "flex",
+    justifyContent: "center",
+    alignContent: "center",
+    alignSelf: "center",
+    marginTop: 150
   },
   slide2: {
     flex: 1,
@@ -45,7 +53,7 @@ export const splashScreenStyles = StyleSheet.create({
 
   image: {
     width,
-    height,
+    height: "100%",
   },
   imageView: {
     position: "absolute",

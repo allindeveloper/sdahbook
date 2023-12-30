@@ -37,7 +37,7 @@ export const searchDialogStyles = StyleSheet.create({
     alignContent: "center",
     alignItems: "center",
     position: "absolute",
-    right: -110,
+    right: -100,
   },
   searchQuery: {
     display: "flex",

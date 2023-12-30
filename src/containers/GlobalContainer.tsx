@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import FullModal from "../components/Modal/FullModal";
 import { useAppDispatch, useAppSelector } from "../hooks/hooks";
 import {
@@ -18,12 +18,16 @@ import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { HymnScreenStackParamList } from "../types/hymn";
 import { Route } from "../router/routes";
+import SystemNavigationBar from "react-native-system-navigation-bar";
 
 export const GlobalContainer = () => {
   const { showHymnSearchDialog } = useAppSelector((state) => state.hymnReducer);
   const [searchQuery, setSearchQuery] = useState("");
   const dispatch = useAppDispatch();
   const { offlineHymn } = useHymns();
+  useEffect(() => {
+    SystemNavigationBar.setNavigationColor(colors.PRIMARY);
+  }, []);
   const navigation =
     useNavigation<
       NativeStackNavigationProp<HymnScreenStackParamList, Route.HymnScreen>

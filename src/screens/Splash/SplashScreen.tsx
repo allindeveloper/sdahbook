@@ -10,6 +10,7 @@ const SplashScreen = () => {
     const checkFirstTimeUser = async () => {
       const firstTime = await AsyncStorage.getItem(StorageKeys.IsFirstTime);
       const isFirstTimeUser = !firstTime ? true : false;
+
       try {
         if (isFirstTimeUser) {
           setTimeout(() => {

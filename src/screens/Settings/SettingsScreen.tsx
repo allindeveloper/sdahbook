@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { Linking, ScrollView, TouchableOpacity, View } from "react-native";
 import { Header } from "../../components/Header/Header";
 import NativeText from "../../components/Text/NativeText";
@@ -33,13 +33,12 @@ export const SettingsScreen = () => {
 
   const handleSyncContent = async () => {
     const netInfoState = await NetInfo.fetch();
-    if (netInfoState.isConnected) {
+    if (!netInfoState.isConnected) {
       dispatchToast({
         message: "Please check your network.",
       });
       return;
     }
-    hymns.refetch();
     toast.promise(
       hymns.refetch(),
       {
@@ -58,6 +57,7 @@ export const SettingsScreen = () => {
     const url = "https://github.com/allindeveloper";
     Linking.openURL(url);
   };
+
   return (
     <>
       <Header title="Settings" />

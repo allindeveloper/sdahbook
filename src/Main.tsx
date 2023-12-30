@@ -12,10 +12,10 @@ import { store } from "./redux/store";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { PaperProvider, Portal } from "react-native-paper";
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import { GlobalContainer } from "./containers/GlobalContainer";
 import { Toasts } from "@backpackapp-io/react-native-toast";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 import { commonStyles } from "./styles/commonStyles";
+import { GlobalContainer } from "./containers/GlobalContainer";
 const Stack = createNativeStackNavigator();
 
 const persistor = persistStore(store);
@@ -31,6 +31,7 @@ const Main = () => {
   const customTheme = {
     COLORS: { PRIMARY: colors.BLACKONE },
   };
+
   return (
     <SafeAreaProvider>
       <GestureHandlerRootView style={commonStyles.flexOne}>

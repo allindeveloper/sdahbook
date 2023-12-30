@@ -1,8 +1,14 @@
-import React from "react";
-import { StatusBar, StyleProp, StyleSheet, ViewStyle } from "react-native";
+import React, { useCallback, useEffect } from "react";
+import {
+  Platform,
+  StatusBar,
+  StyleProp,
+  StyleSheet,
+  ViewStyle,
+} from "react-native";
 import { Modal } from "react-native-paper";
 import { appPadding } from "../../constants/appConstants";
-import { heightPercentageToDP } from "react-native-responsive-screen";
+import { useFocusEffect } from "@react-navigation/native";
 
 export interface FullModalProps {
   hideModal: () => void;
@@ -20,9 +26,15 @@ const FullModal = ({
   children,
   height,
 }: FullModalProps) => {
+  useEffect(
+    useCallback(() => {
+      StatusBar.setBarStyle("light-content");
+      Platform.OS === "android" && StatusBar.setBackgroundColor("transparent");
+      StatusBar.setTranslucent(true);
+    }, []),
+  );
   return (
     <>
-      <StatusBar translucent backgroundColor="transparent" />
       <Modal
         visible={visible}
         onDismiss={hideModal}

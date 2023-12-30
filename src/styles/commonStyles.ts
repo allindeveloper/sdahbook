@@ -1,6 +1,7 @@
 import { StyleSheet } from "react-native";
 import { colors } from "./colors";
 import { appPadding } from "../constants/appConstants";
+import { heightPercentageToDP } from "react-native-responsive-screen";
 
 const defaultPadding = {
   paddingLeft: appPadding,

@@ -38,6 +38,7 @@ const AppButton: FC<AppButtonProps> = (props) => {
     disabled = false,
     textStyle = {},
     icon,
+    style,
     fontSize,
   } = props;
   return (
@@ -47,7 +48,7 @@ const AppButton: FC<AppButtonProps> = (props) => {
       buttonColor={colors.PRIMARY}
       disabled={disabled}
       textColor={colors.WHITE}
-      style={styles.button}
+      style={[styles.button, style]}
       onPress={onPress}
       contentStyle={styles.contentStyle}
     >
