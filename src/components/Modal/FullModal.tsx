@@ -8,7 +8,6 @@ import {
 } from "react-native";
 import { Modal } from "react-native-paper";
 import { appPadding } from "../../constants/appConstants";
-import { useFocusEffect } from "@react-navigation/native";
 
 export interface FullModalProps {
   hideModal: () => void;
