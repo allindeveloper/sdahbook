@@ -69,6 +69,12 @@ const WelcomeScreen = () => {
             source={require("../../assets/images/splashimagetwo.webp")}
             resizeMode="cover"
           >
+            <Block>
+              <Image
+                source={require("../../assets/images/sdahbook.png")}
+                style={splashScreenStyles.logoImage}
+              />
+            </Block>
             <View style={splashScreenStyles.imageView}>
               <NativeText
                 defaultColor={false}
@@ -87,6 +93,12 @@ const WelcomeScreen = () => {
             style={splashScreenStyles.image}
             source={require("../../assets/images/splashimagethree.webp")}
           >
+            <Block>
+              <Image
+                source={require("../../assets/images/sdahbook.png")}
+                style={splashScreenStyles.logoImage}
+              />
+            </Block>
             <View style={splashScreenStyles.imageView}>
               <NativeText
                 defaultColor={false}
