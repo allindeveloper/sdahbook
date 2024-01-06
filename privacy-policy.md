@@ -18,7 +18,7 @@ The App may collect non-personal, anonymized information about the usage of the 
 
 ## Data Security:
 
-While no method of data transmission over the internet is completely secure, we take reasonable measures to protect the information processed by [Your Hymnal App]. We use industry-standard encryption and security practices to safeguard any data that may be collected.
+While no method of data transmission over the internet is completely secure, we take reasonable measures to protect the information processed by SDAH BOOk. We use industry-standard encryption and security practices to safeguard any data that may be collected.
 
 ## Third-Party Services:
 
