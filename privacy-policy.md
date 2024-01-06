@@ -30,7 +30,7 @@ SDAH BOOK does not use cookies or any similar tracking technologies at this time
 
 
 ## Children's Privacy:
-SDAH BOOK is not intended for use by children under the age of 13. We do not knowingly collect personal information from children. If you believe that we may have inadvertently collected information from a child, please contact the developer at uchendubozz@gmail.com
+SDAH BOOK can be used by children under the age of 13. We do not knowingly collect personal information from children. If you believe that we may have inadvertently collected information from a child, please contact the developer at uchendubozz@gmail.com
 
 ## Changes to this Privacy Policy:
 We reserve the right to update or modify this Privacy Policy at any time. Any changes will be effective immediately upon posting the updated Privacy Policy on the App. Users are encouraged to review this Privacy Policy periodically for any changes.
