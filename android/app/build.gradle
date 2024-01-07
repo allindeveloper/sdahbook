@@ -60,7 +60,7 @@ apply from: project(':react-native-config').projectDir.getPath() + "/dotenv.grad
 /**
  * Set this to true to Run Proguard on Release builds to minify the Java bytecode.
  */
-def enableProguardInReleaseBuilds = false
+def enableProguardInReleaseBuilds = true
 
 /**
  * The preferred build flavor of JavaScriptCore (JSC)
@@ -82,11 +82,12 @@ android {
 
     namespace "com.sdahbook"
     defaultConfig {
+        resConfigs "en", "US"
         applicationId "com.sdahbook"
         minSdkVersion rootProject.ext.minSdkVersion
         targetSdkVersion rootProject.ext.targetSdkVersion
-        versionCode 1
-        versionName "1.0"
+        versionCode 3
+        versionName "1.0.2"
         resValue "string", "build_config_package", "com.sdahbook"
 
     }
@@ -97,6 +98,14 @@ android {
             keyAlias 'androiddebugkey'
             keyPassword 'android'
         }
+        release {
+            if (project.hasProperty('SDAHBOOK_UPLOAD_STORE_FILE')) {
+                storeFile file(SDAHBOOK_UPLOAD_STORE_FILE)
+                storePassword SDAHBOOK_UPLOAD_STORE_PASSWORD
+                keyAlias SDAHBOOK_UPLOAD_KEY_ALIAS
+                keyPassword SDAHBOOK_UPLOAD_KEY_PASSWORD
+            }
+        }
     }
     buildTypes {
         debug {
@@ -105,7 +114,7 @@ android {
         release {
             // Caution! In production, you need to generate your own keystore file.
             // see https://reactnative.dev/docs/signed-apk-android.
-            signingConfig signingConfigs.debug
+            signingConfig signingConfigs.release
             minifyEnabled enableProguardInReleaseBuilds
             proguardFiles getDefaultProguardFile("proguard-android.txt"), "proguard-rules.pro"
         }

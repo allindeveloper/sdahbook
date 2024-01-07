@@ -8,7 +8,8 @@
 #   http://developer.android.com/guide/developing/tools/proguard.html
 
 # Add any project specific keep options here:
--keepclassmembers class com.android.installreferrer.api.** {
-  *;
-}
+
 -keep class com.google.android.gms.common.** {*;}
+-keep class com.facebook.react.turbomodule.** { *; }
+-keep class com.swmansion.reanimated.** { *; }
+-keep class com.sdahbook.BuildConfig { *; }
