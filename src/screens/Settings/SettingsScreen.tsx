@@ -15,13 +15,19 @@ import useToast from "../../hooks/useAppToast";
 import { Block } from "galio-framework";
 import { ToastPosition, toast } from "@backpackapp-io/react-native-toast";
 import NetInfo from "@react-native-community/netinfo";
+import { Language } from "../../constants/locale";
+import LanguageSettings from "../../modules/preferences/LanguageSettings";
 
 export const SettingsScreen = () => {
   const { dispatchToast } = useToast();
   const { hymns } = useHymns();
   const [showFontSizeModal, setshowFontSizeModal] = useState(false);
+  const [showHymnLanguageSettingsModal, setshowHymnLanguageSettingsModal] =
+    useState(false);
 
-  const { currentFont } = useAppSelector((state) => state.settingsReducer);
+  const { currentFont, language } = useAppSelector(
+    (state) => state.settingsReducer,
+  );
 
   const handleSetFontSize = () => {
     toggleFontSizeModal();
@@ -29,6 +35,10 @@ export const SettingsScreen = () => {
 
   const toggleFontSizeModal = () => {
     setshowFontSizeModal(!showFontSizeModal);
+  };
+
+  const toggleHymnLanguageSettingsModal = () => {
+    setshowHymnLanguageSettingsModal(!showHymnLanguageSettingsModal);
   };
 
   const handleSyncContent = async () => {
@@ -58,6 +68,16 @@ export const SettingsScreen = () => {
     Linking.openURL(url);
   };
 
+  const handleShowHymnLanguageSettings = () => {
+    setshowHymnLanguageSettingsModal(true);
+  };
+
+  const appLanguage =
+    language === Language.English
+      ? "English"
+      : language === Language.Igbo
+      ? "Igbo"
+      : "";
   return (
     <>
       <Header title="Settings" />
@@ -92,6 +112,19 @@ export const SettingsScreen = () => {
           <Space top={4} />
           <NativeText defaultColor={false} color={colors.GREYONE} size={15}>
             Synced on {new Date().getFullYear()}
+          </NativeText>
+        </TouchableOpacity>
+        <Divider />
+        <TouchableOpacity
+          style={[settingsScreenStyles.listItem]}
+          onPress={handleShowHymnLanguageSettings}
+        >
+          <NativeText defaultColor={false} color={colors.BLACK} size={18}>
+            Hymn Language
+          </NativeText>
+          <Space top={4} />
+          <NativeText defaultColor={false} color={colors.GREYONE} size={15}>
+            {appLanguage}
           </NativeText>
         </TouchableOpacity>
         <Divider />
@@ -134,6 +167,11 @@ export const SettingsScreen = () => {
         title="Font Size"
         hideDialog={toggleFontSizeModal}
         isVisible={showFontSizeModal}
+      />
+      <LanguageSettings
+        title="Hymn Language"
+        hideDialog={toggleHymnLanguageSettingsModal}
+        isVisible={showHymnLanguageSettingsModal}
       />
     </>
   );

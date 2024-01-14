@@ -14,7 +14,8 @@ const baseURL = Platform.select({
 export const getAllHymnsApiService = async (
   payload: NetworkRequest,
 ): Promise<AppResponse<HymnBook[]>> => {
-  const data = await fetch(`${baseURL}${getApiUrl(apiConstants.HYMNS, payload.searchQuery)}`);
+  console.log("getAllHym", payload);
+  const data = await fetch(`${baseURL}${getApiUrl(apiConstants.HYMNS)}?${payload.searchQuery}&locale=${payload.locale}`);
   const response = await data.json();
   return response as AppResponse<HymnBook[]>;
 };

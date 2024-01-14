@@ -1,5 +1,5 @@
 
-Privacy Policy for SDAH BOOk
+Privacy Policy for SDAH BOOK
 
 Last Updated: January 6th, 2024.
 

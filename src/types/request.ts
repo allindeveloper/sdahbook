@@ -5,5 +5,6 @@ export interface ApiError {
 }
 export interface NetworkRequest {
   searchQuery?: string;
+  locale?: string
 }
 

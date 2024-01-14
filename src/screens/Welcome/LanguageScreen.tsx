@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { ImageBackground, TouchableOpacity, View } from "react-native";
 import { colors } from "../../styles/colors";
 import NativeText from "../../components/Text/NativeText";
@@ -10,15 +10,19 @@ import { Route } from "../../router/routes";
 import { LanguageStackParamList } from "../../types/language";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { StorageKeys } from "../../constants/storagekeys";
+import { useAppDispatch, useAppSelector } from "../../hooks/hooks";
+import { setLanguage } from "../../redux/reducers/settingsReducer";
+import { Language } from "../../constants/locale";
 
 const LanguageScreen = () => {
-  const [selectedLanguage, setselectedLanguage] = useState("");
+  const { language } = useAppSelector((state) => state.settingsReducer);
+  const dispatch = useAppDispatch();
   const navigation =
     useNavigation<
       NativeStackNavigationProp<LanguageStackParamList, Route.TabNavigator>
     >();
-  const handleSetLanguage = async (language: string) => {
-    setselectedLanguage(language);
+  const handleSetLanguage = async (language: Language) => {
+    dispatch(setLanguage(language));
     await AsyncStorage.setItem(StorageKeys.IsFirstTime, "1");
     navigation.dispatch(
       CommonActions.reset({
@@ -36,10 +40,10 @@ const LanguageScreen = () => {
         <View style={languageScreenStyles.languageView}>
           <TouchableOpacity
             activeOpacity={0.7}
-            onPress={() => handleSetLanguage("english")}
+            onPress={() => handleSetLanguage(Language.English)}
             style={[
               languageScreenStyles.languageItem,
-              selectedLanguage === "english" &&
+              language === Language.English &&
                 languageScreenStyles.languageItemSelected,
             ]}
           >
@@ -49,10 +53,10 @@ const LanguageScreen = () => {
           </TouchableOpacity>
           <TouchableOpacity
             activeOpacity={0.7}
-            onPress={() => handleSetLanguage("igbo")}
+            onPress={() => handleSetLanguage(Language.Igbo)}
             style={[
               languageScreenStyles.languageItem,
-              selectedLanguage === "igbo" &&
+              language === Language.Igbo &&
                 languageScreenStyles.languageItemSelected,
             ]}
           >

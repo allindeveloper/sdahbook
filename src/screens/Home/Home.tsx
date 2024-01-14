@@ -12,7 +12,6 @@ import { useNavigation } from "@react-navigation/native";
 import { NativeStackNavigationProp } from "@react-navigation/native-stack";
 import { saveCurrentHymn } from "../../redux/reducers/hymnReducer";
 import { useAppDispatch } from "../../hooks/hooks";
-import Config from "react-native-config";
 
 export const Home = () => {
   const { offlineHymn } = useHymns();

@@ -18,9 +18,7 @@ const WelcomeScreen = () => {
     useNavigation<
       NativeStackNavigationProp<WelcomeStackParamList, Route.LanguageIntro>
     >();
-  const onIndexChanged = (index: number) => {
-    //
-  };
+
   const onPressWelcome = () => {
     navigation.navigate(Route.LanguageIntro);
   };
@@ -32,7 +30,6 @@ const WelcomeScreen = () => {
         translucent={true}
       />
       <Swiper
-        onIndexChanged={onIndexChanged}
         dot={<View style={welcomeScreenStyles.dot} />}
         activeDot={<View style={welcomeScreenStyles.activeDot} />}
         paginationStyle={welcomeScreenStyles.pagination}
@@ -111,16 +108,7 @@ const WelcomeScreen = () => {
               </NativeText>
             </View>
             <View style={splashScreenStyles.welcomeButton}>
-              <AppButton
-                onPress={onPressWelcome}
-                style={{
-                  borderColor: colors.GRAY,
-                  borderRadius: 1,
-                  borderStyle: "solid",
-                  borderWidth: 1,
-                }}
-                title="Welcome"
-              />
+              <AppButton onPress={onPressWelcome} title="Welcome" />
             </View>
           </ImageBackground>
         </View>

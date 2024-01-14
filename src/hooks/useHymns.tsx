@@ -8,12 +8,15 @@ type UseHymnsPayload = {
 };
 const useHymns = (payload?: UseHymnsPayload) => {
   const { offlineHymn } = useAppSelector((state) => state.hymnReducer);
+  const { language } = useAppSelector((state) => state.settingsReducer);
   const dispatch = useAppDispatch();
+
   const hymns = useQuery(
-    ["allhymns"],
+    ["allhymns", payload?.searchQuery, language],
     () =>
       getAllHymnsApiService({
         searchQuery: payload?.searchQuery,
+        locale: language,
       }),
     {
       select: (data) => data.data,
@@ -27,6 +30,7 @@ const useHymns = (payload?: UseHymnsPayload) => {
       dispatch(saveOfflineHymn(hymns.data));
     }
   }, [hymns.isSuccess]);
+
   return {
     offlineHymn,
     hymns,
