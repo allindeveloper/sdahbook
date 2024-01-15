@@ -9,7 +9,6 @@
     "start": "react-native start",
     "test": "jest",
     "type-check": "tsc",
-    "validate:branch": "npx validate-branch-name",
     "format": "prettier --write --staged './**/*.{js,jsx,ts,tsx}' --config ./.prettierrc"
   },
   "dependencies": {
